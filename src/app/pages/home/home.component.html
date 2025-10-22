@@ -1,0 +1,82 @@
+<div class="container">
+	<div class="options">
+		<div class="logo">
+			<img class="github-logo" src="assets/github-logo.png" alt="Logo GitCher">
+			<span class="logo-text">gitcher</span>
+		</div>
+		<div class="actions">
+			<button id="add-account" class="btn-add" (click)="openAddModal()">
+				<i class="fa-solid fa-circle-plus"></i>
+				<span>Adicionar</span>
+			</button>
+			<button (click)="exportAccounts()">
+				<i class="fas fa-file-export"></i>
+				Exportar
+			</button>
+			<button (click)="importAccounts()">
+				<i class="fas fa-file-import"></i>
+				Importar
+			</button>
+		</div>
+	</div>
+
+	<div class="warning-box">
+		<i class="fa-solid fa-circle-exclamation"></i>
+		Ao exportar, somente os dados das contas serão incluídos no arquivo.
+	</div>
+
+	<div class="git-advanced-actions">
+		<button (click)="viewConfig('global')">
+			<i class="fas fa-eye"></i>
+			Ver Config Global
+		</button>
+		<button (click)="resetConfig('global')">
+			<i class="fas fa-broom"></i>
+			Resetar Config Global
+		</button>
+		<button (click)="viewConfig('local')">
+			<i class="fas fa-eye"></i>
+			Ver Config Local
+		</button>
+		<button (click)="resetConfig('local')">
+			<i class="fas fa-broom"></i>
+			Resetar config local
+		</button>
+	</div>
+
+	<div class="accounts">
+		<ng-container *ngIf="accounts.length > 0; else noAccounts">
+			<app-card
+				*ngFor="let acc of accounts"
+				[account]="acc"
+				[linkedRepos]="getLinkedRepos(acc.id)"
+				[usedLocally]="isAccountUsedLocally(acc.id)"
+				(activate)="setActive($event)"
+				(activateLocal)="setLocal(acc)"
+				(edit)="openEditModal($event)"
+				(remove)="removeAccount($event)"
+				(viewHistory)="openHistory(acc, $event)" />
+		</ng-container>
+
+		<ng-template #noAccounts>
+			<div class="no-accounts">
+				<i class="fas fa-user-slash"></i>
+				<p>Nenhuma conta adicionada ainda.</p>
+			</div>
+		</ng-template>
+	</div>
+</div>
+
+<app-account-modal
+	*ngIf="showModal"
+	[account]="selectedAccount"
+	(submit)="handleSubmit($event)"
+	(close)="handleClose()"
+/>
+
+<app-commit-history-modal
+	*ngIf="selectedRepo && selectedHistoryAccount"
+	[repoPath]="selectedRepo"
+	[account]="selectedHistoryAccount"
+	(close)="closeHistory()"
+/>

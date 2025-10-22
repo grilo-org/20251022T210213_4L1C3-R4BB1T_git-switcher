@@ -1,0 +1,83 @@
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 12px;
+	padding: 2em;
+	z-index: 2;
+	width: 100%;
+	max-width: 600px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	color: #1e293b;
+
+	h2 {
+		margin-bottom: 1em;
+		font-size: 1.2em;
+
+		.repo-name {
+			color: #3b82f6;
+			background-color: #e5e7eb;
+			padding: 0.2em 0.4em;
+			border-radius: 10px;
+		}
+	}
+
+	.loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #64748b;
+		padding: 1.5em;
+	}
+
+	.empty-message {
+		text-align: center;
+		padding: 1.5em;
+		color: #94a3b8;
+	}
+
+	.commits-list {
+		list-style: none;
+		max-height: 265px;
+		overflow-y: auto;
+
+		li {
+			margin-bottom: 1em;
+			border-bottom: 1px solid #e5e7eb;
+			padding-bottom: 0.5em;
+
+			.date {
+				font-size: 0.8em;
+				color: #64748b;
+			}
+		}
+	}
+
+	.buttons {
+		text-align: right;
+		margin-top: 1em;
+
+		button {
+			padding: 0.5em 1em;
+			border: none;
+			border-radius: 6px;
+			background-color: rgb(233, 89, 89);
+			color: #fff;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 0.8;
+				cursor: pointer;
+			}
+		}
+	}
+}

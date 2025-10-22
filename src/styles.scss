@@ -1,0 +1,23 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #22272e;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fff;
+}
+
+#toast-container {
+	position: fixed !important;
+	z-index: 9999;
+	pointer-events: none;
+}
+
+#toast-container>div {
+	pointer-events: auto;
+}

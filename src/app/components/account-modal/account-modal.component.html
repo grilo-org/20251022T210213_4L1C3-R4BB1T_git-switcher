@@ -1,0 +1,26 @@
+<div class="modal-overlay" (click)="onClose()"></div>
+
+<div class="modal">
+	<form (ngSubmit)="onSubmit()">
+		<label>
+			Tipo da Conta
+			<input type="text" [(ngModel)]="type" name="type" required placeholder="ex: estudos, trabalho..." />
+		</label>
+		<label>
+			Nome
+			<input type="text" [(ngModel)]="name" name="name" required />
+		</label>
+		<label>
+			Username
+			<input type="text" [(ngModel)]="username" name="username" required />
+		</label>
+		<label>
+			Email
+			<input type="email" [(ngModel)]="email" name="email" required placeholder="ex: email@email.com" />
+		</label>
+		<div class="buttons">
+			<button type="submit">Salvar</button>
+			<button type="button" (click)="onClose()">Cancelar</button>
+		</div>
+	</form>
+</div>

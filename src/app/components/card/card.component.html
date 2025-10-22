@@ -1,0 +1,53 @@
+<div class="card">
+	<div class="card-header">
+		<div class="card-actions">
+			<button class="icon-button" (click)="edit.emit(account)" title="Editar">
+				<i class="fas fa-pen"></i>
+			</button>
+			<button class="icon-button" (click)="remove.emit(account.id)" title="Remover">
+				<i class="fas fa-trash"></i>
+			</button>
+		</div>
+
+		<div class="card-desc">
+			<span class="card-title">{{ account.type }}</span>
+			<div class="badges">
+				<span *ngIf="account.isActive && account.scope === 'global'" class="badge">
+					<i class="fas fa-globe"></i> Em uso global
+				</span>
+				<span *ngIf="usedLocally" class="badge">
+					<i class="fas fa-terminal"></i> Em uso local
+				</span>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="card-body">
+		<img class="card-image" [src]="account.avatar_url || 'assets/default-avatar.png'">
+		<div class="card-content">
+			<span>{{ account.name }}</span>
+			<span>{{ account.username }}</span>
+		</div>
+	</div>
+
+	<div *ngIf="linkedRepos?.length" class="linked-repos">
+		<div class="linked-title">
+			<i class="fa-solid fa-folder-open"></i>
+			<span>Repositórios ativos</span>
+		</div>
+		<ul>
+			<li *ngFor="let repo of linkedRepos">
+				{{ getRepoName(repo) }}
+				<button class="history-btn" (click)="viewCommits(repo)" title="Ver commits">
+					<i class="fas fa-clock-rotate-left"></i>
+				</button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="card-footer">
+		<button (click)="activateLocal.emit()">Local</button>
+		<button (click)="setActive('global')">Global</button>
+	</div>
+</div>

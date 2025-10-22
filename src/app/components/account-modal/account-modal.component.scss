@@ -1,0 +1,72 @@
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
+
+.modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 12px;
+	padding: 2em;
+	z-index: 2;
+	width: 100%;
+	max-width: 400px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	color: #1e293b;
+
+	h2 {
+		margin-bottom: 1em;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+
+		input {
+			width: 100%;
+			padding: 0.5em;
+			border: 1px solid #ccc;
+			border-radius: 6px;
+			margin-top: 0.6em;
+			font-size: 1em;
+
+			&:focus {
+				outline: 2px solid #747474;
+			}
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: flex-end;
+			gap: 1em;
+			margin-top: 0.6em;
+
+			button {
+				padding: 0.5em 1.5em;
+				border-radius: 6px;
+				border: none;
+				color: #fff;
+				font-size: 1em;
+
+				&:first-child {
+					background-color: #3b82f6;
+				}
+
+				&:last-child {
+					background-color: rgb(233, 89, 89);
+				}
+
+				&:hover {
+					opacity: 0.8;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,98 @@
+{
+  "name": "git-switcher",
+  "productName": "Gitcher",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "description": "Git Account Manager",
+  "author": {
+    "name": "Livia"
+  },
+  "build": {
+    "appId": "com.app.gitcher",
+    "productName": "GitCher",
+    "directories": {
+      "buildResources": "buildResources"
+    },
+    "files": [
+      "dist/git-switcher/browser/**/*",
+      "main.js",
+      "preload.js"
+    ],
+    "win": {
+      "icon": "buildResources/icon.png"
+    }
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "buildresources/icon",
+        "extraResources": [
+          {
+            "from": "dist/",
+            "to": "dist/"
+          }
+        ]
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "git-switcher",
+            "setupExe": "GitSwitcherSetup.exe",
+            "setupIcon": "buildResources/icon.ico"
+          }
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "electron-forge start",
+    "build": "ng build --base-href ./ --output-path=dist",
+    "electron": "ng build && electron .",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.2.14",
+	"@angular/common": "^19.2.0",
+	"@angular/compiler": "^19.2.0",
+	"@angular/core": "^19.2.0",
+	"@angular/forms": "^19.2.0",
+	"@angular/platform-browser": "^19.2.0",
+	"@angular/platform-browser-dynamic": "^19.2.0",
+	"@angular/router": "^19.2.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "electron-squirrel-startup": "^1.0.1",
+    "ngx-toastr": "^19.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.2.15",
+    "@angular/cli": "^19.2.15",
+    "@angular/compiler-cli": "^19.2.15",
+	"@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "@types/jasmine": "~5.1.0",
+    "electron": "^36.4.0",
+    "jasmine-core": "~5.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.7.2"
+  }
+}
